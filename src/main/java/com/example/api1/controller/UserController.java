@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/v1/users")
 public class UserController {
 
     private final UserService service;
@@ -16,19 +16,23 @@ public class UserController {
         this.service = service;
     }
 
+    @PostMapping
+    public User create(@RequestBody User user) {
+        return service.create(user);
+    }
+
     @GetMapping
-    public List<User> getAll() {
+    public List<User> findAll() {
         return service.findAll();
     }
 
-    @PostMapping
-    public User create(@RequestBody User user) {
-        return service.save(user);
+    @GetMapping("/{id}")
+    public User findById(@PathVariable Long id) {
+        return service.findById(id);
     }
 
     @PutMapping("/{id}")
-    public User update(@PathVariable Long id,
-                       @RequestBody User user) {
+    public User update(@PathVariable Long id, @RequestBody User user) {
         return service.update(id, user);
     }
 

@@ -10,42 +10,25 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private String nome;
     private String email;
+    private Integer idade;
 
-    public User() {
-    }
+    public User() {}
 
-    public User(String name, String email) {
-        this.name = name;
+    public User(String nome, String email, Integer idade) {
+        this.nome = nome;
         this.email = email;
+        this.idade = idade;
     }
 
-    // GETTERS
+    public Long getId() { return id; }
+    public String getNome() { return nome; }
+    public String getEmail() { return email; }
+    public Integer getIdade() { return idade; }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    // SETTERS
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    public void setId(Long id) { this.id = id; }
+    public void setNome(String nome) { this.nome = nome; }
+    public void setEmail(String email) { this.email = email; }
+    public void setIdade(Integer idade) { this.idade = idade; }
 }
