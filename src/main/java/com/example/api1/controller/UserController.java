@@ -1,6 +1,7 @@
 package com.example.api1.controller;
 
-import com.example.api1.domain.User;
+import com.example.api1.dto.UserRequestDTO;
+import com.example.api1.dto.UserResponseDTO;
 import com.example.api1.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,23 +18,24 @@ public class UserController {
     }
 
     @PostMapping
-    public User create(@RequestBody User user) {
-        return service.create(user);
+    public UserResponseDTO create(@RequestBody UserRequestDTO dto) {
+        return service.create(dto);
     }
 
     @GetMapping
-    public List<User> findAll() {
+    public List<UserResponseDTO> findAll() {
         return service.findAll();
     }
 
     @GetMapping("/{id}")
-    public User findById(@PathVariable Long id) {
+    public UserResponseDTO findById(@PathVariable Long id) {
         return service.findById(id);
     }
 
     @PutMapping("/{id}")
-    public User update(@PathVariable Long id, @RequestBody User user) {
-        return service.update(id, user);
+    public UserResponseDTO update(@PathVariable Long id,
+                                  @RequestBody UserRequestDTO dto) {
+        return service.update(id, dto);
     }
 
     @DeleteMapping("/{id}")
