@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UserService
+public class UserService {
 
     private final UserRepository repository;
 
@@ -87,7 +87,8 @@ public class UserService
 
     public void delete(Long id) {
         User user = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Usuário não encontrado");
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
 
         repository.delete(user);
     }
+}

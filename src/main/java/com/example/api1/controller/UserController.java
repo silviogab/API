@@ -3,6 +3,7 @@ package com.example.api1.controller;
 import com.example.api1.dto.UserRequestDTO;
 import com.example.api1.dto.UserResponseDTO;
 import com.example.api1.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class UserController {
     }
 
     @PostMapping
-    public UserResponseDTO create(@RequestBody UserRequestDTO dto) {
+    public UserResponseDTO create(@Valid @RequestBody UserRequestDTO dto) {
         return service.create(dto);
     }
 
@@ -34,7 +35,7 @@ public class UserController {
 
     @PutMapping("/{id}")
     public UserResponseDTO update(@PathVariable Long id,
-                                  @RequestBody UserRequestDTO dto) {
+                                  @Valid @RequestBody UserRequestDTO dto) {
         return service.update(id, dto);
     }
 
